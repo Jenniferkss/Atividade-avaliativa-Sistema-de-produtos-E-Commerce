@@ -143,6 +143,61 @@ const deleteProduto = (req,res) => {
     message: "Produto deletado com sucesso!!",
     produtoRemovido: produtoParaRemover
     })
+};
+
+const updateProduto = (req,res) => {
+    const id = parseInt(req.params.id);
+    const {nome, categoria, preco, estoque,marca,avaliacao,descricao } = req.body;
+
+    if(isNaN(id)) {
+        return res.status(400).json({
+            sucess: false,
+            message: "O id deve ser um número válido"
+        })
+    }
+
+    const produtoExiste = produtos.find(produto => produto.id === id);
+    if (!produtoExiste) {
+        return res.status(400).json({
+            sucess: false,
+            message: "O produto não existe"
+        })
+    }
+    if (preco <= 0) {
+        return res.status(400).json({
+            sucess: false,
+            message: "O produto nao pode ser gratuito,o valor deve ser maior que 0"
+        })
+    } 
+    if (avaliacao <= 0 || avaliacao >= 5) {
+        return res.status(400).json({
+            sucess: false, 
+            message: "A avaliação deve estar entre 0 e 5 estrelas"
+        })
+    } 
+    const produtosAtualizados = produtos.map(produto => {
+        return produto.id === id
+        ? {
+            ...produto,
+            ... (nome && {nome}),
+            ...(categoria && {categoria}),
+            ...(preco && {preco}),
+            ...(estoque && {estoque}),
+            ...(marca && {marca}),
+            ...(avaliacao && {avaliacao}),
+            ...(descricao && {descricao})
+        }
+        : produto; 
+    });
+
+    produtos.splice(0,produtos.length, ...produtosAtualizados);
+    const produtoNovo = produtos.find(produto => produto.id === id); 
+
+    res.status(200).json({
+        sucess: true,
+        message: "Produto atualizado com sucesso",
+        produto: produtoNovo
+    })
 }
 export {
   getAllProdutos,
@@ -152,5 +207,6 @@ export {
   getProdutoPreco,
   getProdutoAvaliacao,
   createProduto,
-  deleteProduto
+  deleteProduto,
+  updateProduto
 };

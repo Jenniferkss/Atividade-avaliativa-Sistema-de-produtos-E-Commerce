@@ -8,6 +8,7 @@ import {
   getProdutosById,
   getProdutosCategoria,
   getProdutosMarca,
+  updateProduto,
 } from "./../controllers/produtosController.js";
 
 const router = express.Router();
@@ -20,6 +21,6 @@ router.get("/preco/:preco", getProdutoPreco);
 router.get("/avaliacao/:avaliacao", getProdutoAvaliacao);
 router.post("/", createProduto);
 router.delete("/:id", deleteProduto);
-
+router.put("/:id", updateProduto);
 
 export default router;
