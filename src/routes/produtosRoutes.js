@@ -4,6 +4,7 @@ import {
   getAllProdutos,
   getProdutoAvaliacao,
   getProdutoPreco,
+  getProdutosById,
   getProdutosCategoria,
   getProdutosMarca,
 } from "./../controllers/produtosController.js";
@@ -11,6 +12,7 @@ import {
 const router = express.Router();
 
 router.get("/", getAllProdutos);
+router.get("/:id", getProdutosById)
 router.get("/categoria/:categoria", getProdutosCategoria);
 router.get("/marca/:marca", getProdutosMarca);
 router.get("/preco/:preco", getProdutoPreco);

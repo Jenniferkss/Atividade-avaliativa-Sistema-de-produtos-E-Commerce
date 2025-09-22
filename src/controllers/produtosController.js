@@ -7,6 +7,21 @@ const getAllProdutos = (req, res) => {
     produtos: produtos,
   });
 };
+const getProdutosById = (req, res) => {
+    let id = parseInt(req.params.id);
+    const produto = produtos.find( p => p.id === id);
+    
+    if (produto) {
+        res.status(200).json({
+            sucess: true,
+            produto: produto
+        })
+    }
+    res.status(400).json({
+        sucess: false, 
+        message: "Produto não encontrado"
+    })
+};
 const getProdutosCategoria = (req, res) => {
   let categoria = req.params.categoria;
   const produtoCategoria = produtos.filter((p) => p.categoria === categoria);
@@ -113,6 +128,7 @@ const createProduto = (req,res) => {
 };
 export {
   getAllProdutos,
+  getProdutosById,
   getProdutosCategoria,
   getProdutosMarca,
   getProdutoPreco,
