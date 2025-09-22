@@ -72,10 +72,50 @@ const getProdutoAvaliacao = (req, res) => {
   });
 };
 
+const createProduto = (req,res) => {
+    const {nome, categoria, preco, estoque,marca,avaliacao,descricao } = req.body;
+
+    if(!nome && !categoria) {
+        return res.status(400).json({
+            sucess: false,
+            message: "Os campos `nome e categoria` são obrigatorio para adicionar um produto!"
+        });
+    }
+    if (!preco || preco <= 0) {
+        return res.status(400).json({
+            sucess: false,
+            message: "O produto nao pode ser gratuito,o valor deve ser maior que 0"
+        })
+    } 
+    if (!avaliacao || avaliacao <= 0 || avaliacao >= 5) {
+        return res.status(400).json({
+            sucess: false, 
+            message: "A avaliação deve estar entre 0 e 5 estrelas"
+        })
+    }
+    const novoProduto = {
+        id: produtos.length +1,
+        nome,
+        categoria,
+        preco,
+        estoque,
+        marca,
+        avaliacao,
+        descricao
+    }
+
+    produtos.push(novoProduto); 
+    res.status(201).json({
+        sucess: true,
+        message: "Novo produto adicionado!",
+        produto: novoProduto
+    })
+};
 export {
   getAllProdutos,
   getProdutosCategoria,
   getProdutosMarca,
   getProdutoPreco,
-  getProdutoAvaliacao
+  getProdutoAvaliacao,
+  createProduto
 };
