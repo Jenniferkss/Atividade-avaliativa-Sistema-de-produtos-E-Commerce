@@ -1,0 +1,111 @@
+const produtos = [
+  {
+    id: 1,
+    nome: "Smartphone Samsung Galaxy S25",
+    categoria: "Eletrônicos",
+    preco: 4999.0,
+    estoque: 150,
+    marca: "Samsung",
+    avaliacao: 4.0,
+    descricao:
+      "O mais novo smartphone da Samsung com câmera de 108MP e processador Exynos 2500.",
+  },
+  {
+    id: 2,
+    nome: "Notebook Dell XPS 15",
+    categoria: "Informática",
+    preco: 8500.0,
+    estoque: 75,
+    marca: "Dell",
+    avaliacao: 4.0,
+    descricao:
+      "Um notebook de alta performance para profissionais e criadores de conteúdo.",
+  },
+  {
+    id: 3,
+    nome: "Smart TV LG OLED C3 55 polegadas",
+    categoria: "Eletrônicos",
+    preco: 6200.0,
+    estoque: 90,
+    marca: "LG",
+    avaliacao: 5,
+    descricao: "Experiência visual impecável com a tecnologia OLED da LG.",
+  },
+  {
+    id: 4,
+    nome: "Fones de Ouvido Sony WH-1000XM5",
+    categoria: "Áudio",
+    preco: 1899.0,
+    estoque: 250,
+    marca: "Sony",
+    avaliacao: 5,
+    descricao:
+      "Cancelamento de ruído líder de mercado e som de alta resolução.",
+  },
+  {
+    id: 5,
+    nome: "Cadeira Gamer ThunderX3 BC1",
+    categoria: "Móveis",
+    preco: 1150.0,
+    estoque: 45,
+    marca: "ThunderX3",
+    avaliacao: 5,
+    descricao: "Conforto e ergonomia para longas sessões de jogos.",
+  },
+  {
+    id: 6,
+    nome: "Micro-ondas Brastemp BME25A",
+    categoria: "Eletrodomésticos",
+    preco: 550.0,
+    estoque: 120,
+    marca: "Brastemp",
+    avaliacao: 5,
+    descricao: "Funcionalidade e design moderno para sua cozinha.",
+  },
+  {
+    id: 7,
+    nome: "Relógio Inteligente Apple Watch Series 10",
+    categoria: "Vestuário e Acessórios",
+    preco: 3999.0,
+    estoque: 200,
+    marca: "Apple",
+    avaliacao: 5,
+    descricao:
+      "Monitoramento de saúde e conectividade na ponta dos seus dedos.",
+  },
+  {
+    id: 8,
+    nome: "Liquidificador Philips Walita ProBlend 6",
+    categoria: "Eletroportáteis",
+    preco: 329.9,
+    estoque: 300,
+    marca: "Philips Walita",
+    avaliacao: 5,
+    descricao:
+      "Potência e versatilidade para preparar sucos, vitaminas e muito mais.",
+  },
+  {
+    id: 9,
+    nome: "Impressora Multifuncional Epson EcoTank L3250",
+    categoria: "Informática",
+    preco: 1250.0,
+    estoque: 60,
+    marca: "Epson",
+    avaliacao: 5,
+    descricao:
+      "Impressão sem cartuchos, com baixo custo por página e alta qualidade.",
+  },
+  {
+    id: 10,
+    nome: "Máquina de Lavar Roupas Brastemp BWL11AB",
+    categoria: "Eletrodomésticos",
+    preco: 2199.0,
+    estoque: 85,
+    marca: "Brastemp",
+    avaliacao: 5,
+    descricao:
+      "Lavagem completa e eficiente para suas roupas, com diversas funções.",
+  },
+];
+
+export default { produtos };

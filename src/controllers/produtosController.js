@@ -1,0 +1,81 @@
+import dados from "../models/data.js";
+const { produtos } = dados;
+
+const getAllProdutos = (req, res) => {
+  res.status(200).json({
+    total: produtos.length,
+    produtos: produtos,
+  });
+};
+const getProdutosCategoria = (req, res) => {
+  let categoria = req.params.categoria;
+  const produtoCategoria = produtos.filter((p) => p.categoria === categoria);
+
+  if (categoria) {
+    res.status(200).json({
+      sucess: true,
+      produtoCategoria: produtoCategoria,
+    });
+  }
+  res.status(400).json({
+    sucess: false,
+    message: "Nenhum produto desta categoria foi encontrado",
+  });
+
+};
+const getProdutosMarca = (req, res) => {
+  let marca = req.params.marca;
+  const produtoMarca = produtos.filter((p) => p.marca === marca);
+
+  if (marca) {
+    res.status(200).json({
+      sucess: true,
+      produtoMarca: produtoMarca,
+    });
+  }
+  res.status(400).json({
+    sucess: false,
+    message: "Nenhum produto desta marca foi encontrado",
+  });
+};
+
+const getProdutoPreco = (req, res) => {
+  let preco = parseInt(req.params.preco);
+
+  const produtoPreco = produtos.filter((p) => p.preco === preco);
+
+  if (preco) {
+    res.status(200).json({
+      sucess: true,
+      produtoPreco: produtoPreco,
+    });
+  }
+  res.status(400).json({
+    sucess: false,
+    message: "Não existem produtos nesta faixa de preço",
+  });
+};
+const getProdutoAvaliacao = (req, res) => {
+  let avaliacao = parseInt(req.params.avaliacao);
+
+  const produtoAvaliacao = produtos.filter((p) => p.avaliacao === avaliacao);
+
+  if (avaliacao) {
+    res.status(200).json({
+      sucess: true,
+      produtoAvaliacao: produtoAvaliacao
+    });
+  }
+  res.status(400).json({
+    sucess: false,
+    message: "Não existem produtos com essa avaliação",
+  });
+};
+
+export {
+  getAllProdutos,
+  getProdutosCategoria,
+  getProdutosMarca,
+  getProdutoPreco,
+  getProdutoAvaliacao
+};
