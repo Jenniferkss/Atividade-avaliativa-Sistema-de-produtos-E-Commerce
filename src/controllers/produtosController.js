@@ -126,6 +126,24 @@ const createProduto = (req,res) => {
         produto: novoProduto
     })
 };
+
+const deleteProduto = (req,res) => {
+    let id = parseInt(req.params.id);
+    const produtoParaRemover = produtos.find(p => p.id === id);
+    if(!produtoParaRemover) {
+        return res.status(404).json({
+            sucess: false,
+            message: "Este produto não existe"
+        })
+    }
+    const produtosFiltrados = produtos.filter(produto => produto.id !== id);
+    produtos.splice(0, produtos.length, ...produtosFiltrados);
+    res.status(200).json({
+    sucess: true,
+    message: "Produto deletado com sucesso!!",
+    produtoRemovido: produtoParaRemover
+    })
+}
 export {
   getAllProdutos,
   getProdutosById,
@@ -133,5 +151,6 @@ export {
   getProdutosMarca,
   getProdutoPreco,
   getProdutoAvaliacao,
-  createProduto
+  createProduto,
+  deleteProduto
 };
